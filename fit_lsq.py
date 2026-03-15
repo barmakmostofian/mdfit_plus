@@ -4,12 +4,16 @@ from sklearn.model_selection import LeaveOneOut
 from sklearn.metrics import mean_squared_error, r2_score
 
 
-# Load data
-feat_input_file = './merged_data.csv' 
-response_input_file = 'exp_pic50.txt' 
+# Set up command-line arguments
+parser = argparse.ArgumentParser(description='Read data filefrom the command line.')
+parser.add_argument('--feat_data',      type=str,   help='Path to the feature data file')
+parser.add_argument('--response_data',  type=str,   help='Path to the response data file')
+args = parser.parse_args()
 
-df_feat     = pd.read_csv(feat_input_file, sep=',', header=0, index_col=0)
-df_response = pd.read_csv(response_input_file, sep=',', header=0, index_col=0)
+
+#Load data
+df_feat     = pd.read_csv(args.feat_data,,    sep=',', header=0, index_col=0)
+df_response = pd.read_csv(args.response_data, sep=',', header=0, index_col=0)
 
 df_data     = pd.merge(df_feat, df_response, left_index=True, right_index=True)
 
