@@ -6,7 +6,7 @@ The basic strategy is to identify top-N (e.g. N=10) features that most contribut
 
 MDFitML achieves R<sup>2</sup> values comparable or superior to conventional alchemical binding free energy methods, particularly when taking transient interactions like water-bridged Hbonds into account. Of course, it is agnostic toward the MD simulation and analysis software, as long as the feature matrix follows the formatting guidelines (see `data/`).  
 
-# Usage 
+### Usage 
 
 The script can be run like this:<br>
 `python run_mdfitml_lasso.py   --data_feat  merged_data.csv   --data_obs  obs_pic50.csv   --top_N 10`
@@ -15,7 +15,7 @@ The flags `--data_feat` and `--dat_obs` handle the input files, i.e., feature ma
 
 Under the hood, a nested leave-one-out cross-validation (LOO-CV) is performed to optimize hyperparameters (inner loop) before applying the model (outer loop). Features are ranked by mean absolute regression coefficient across all folds, followed up by an OLS (trained and evaluated by LOO-CV) on the top-N features. Ranked features, prediction values, and performance metrics are reported.
 
-# Results
+### Results
 
 MDFitML prints predictions to STDOUT for each outer fold of the LOO-CV, first for the L1 regression and then for the OLS regression. Performance metrics are reported in `results_mdfitml.txt`. Important results are the top-N features ranked by absolute regression coefficients from the L1 regression and the OLS regression performance based on the top-N features, for instance, in terms of R<sup>2</sup>, MAE, or Kendall's  $\tau$. `plot_mdfitml.png` is a bar chart of the feature ranking (see below for the example data).
 <br /><br />
