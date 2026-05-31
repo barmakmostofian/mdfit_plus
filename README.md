@@ -13,6 +13,10 @@ The script can be run like this:<br>
 
 The flags `--data_feat` and `--dat_obs` handle the input files, i.e., feature matrix and response values, respectively, and `--top_N` selects the number of features with the highest regression coefficients to be used for the OLS regression. 
 
-Under the hood, a nested leve-one-out cross-validation (LOO-CV) is performed to optimize hyperparameters (inner loop) before applying the model (outer loop). Features are ranked by mean absolute regression coefficient across all folds, followed up by an OLS (trained and evaluated by LOO-CV) on the top-N features. Ranked features, prediction values, and performance metrics are reported.
+Under the hood, a nested leave-one-out cross-validation (LOO-CV) is performed to optimize hyperparameters (inner loop) before applying the model (outer loop). Features are ranked by mean absolute regression coefficient across all folds, followed up by an OLS (trained and evaluated by LOO-CV) on the top-N features. Ranked features, prediction values, and performance metrics are reported.
 
-# Analysis
+# Results
+
+MDFitML prints predictions to STDOUT for each outer fold of the LOO-CV, first for the L1 regression and then for the OLS regression. Performance metrics are reported in `results_mdfitml.txt`. Important results are the top-N features ranked by absolute regression coefficients from the L1 regression and the OLS regression performance based on the top-N features, for instance, in terms of R<sup>2</sup>, MAE, or Kendall's  $\tau$. `plot_mdfitml.png` is a bar chart of the feature ranking (see below for the example data).
+<br /><br />
+![alt text](data/plot_mdfitml.png)
