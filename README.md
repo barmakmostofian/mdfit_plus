@@ -1,4 +1,4 @@
-# MDFitML
+# mdfitml
 
 MDFitML is a framework for small-molecule potency prediction derived from protein-ligand simulation fingerprints (SimFPs). Based on the [MDFit](https://dx.doi.org/10.1007/s10822-024-00564-2) workflow, it is now significantly improved in terms of end-to-end automation and results interpretation. 
 
